@@ -11,6 +11,7 @@ import SignIn from './pages/auth/SignIn'
 import { ToastContainer } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
 import SignUp from './pages/auth/SignUp'
+import Footer from './layout/footer/Footer'
 function App() {
 
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/signin' element={<SignIn />}/>
         <Route path='/signup' element={<SignUp />}/>
       </Routes>
+      <Footer />
     </>
   )
 }
