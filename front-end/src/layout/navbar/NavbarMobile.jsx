@@ -51,7 +51,10 @@ const NavbarMobile = ({setShowMenu, showMenu}) => {
             <ul className="flex flex-col justify-start items-start gap-5 ">
               {
                   NavbarPcData.map((item) => (
-                      <Link to={item.link} key={item.id} className={`text-[16px] ${activeLink === item.name ? "text-orange-600" : "text-white"} font-[500]`} onClick={() => setActiveLink(item.name)}>{item.name}
+                      <Link to={item.link} key={item.id} className={`text-[16px] ${activeLink === item.name ? "text-orange-600" : "text-white"} font-[500]`} onClick={() => {
+                        setActiveLink(item.name)
+                        setShowMenu(false)
+                      }}>{item.name}
                   </Link>
                   ))
               }
@@ -63,7 +66,10 @@ const NavbarMobile = ({setShowMenu, showMenu}) => {
             <ul className={`flex flex-col justify-start items-start gap-5 `}>
             {
                 NavbarMobileCategoryData.map((item) => (
-                    <Link to={item.link} key={item.id} className={`text-[16px] ${activeLink === item.name ? "text-orange-600" : "text-white"} font-[500]`} onClick={() => setActiveLink(item.name)}>{item.name}
+                    <Link to={item.link} key={item.id} className={`text-[16px] ${activeLink === item.name ? "text-orange-600" : "text-white"} font-[500]`} onClick={() => {
+                      setActiveLink(item.name)
+                      setShowMenu(false)
+                      }}>{item.name}
                 </Link>
                 ))
             }

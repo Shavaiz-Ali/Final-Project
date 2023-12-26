@@ -45,7 +45,7 @@ const Slider = () =>{
         className="mySwiper w-full"
       >
         {sliderData.map((item) => (
-            <SwiperSlide className='relative w-full' key={item.key} >
+            <SwiperSlide className='relative w-full' key={item.id} >
                 <img src={item.img} alt="slide image" className='w-full'/>
                <div className="absolute top-[50%] -translate-y-[50%] left-[50px] flex flex-col items-start">
                 <h3 className='sm:text-[50px] text-[35px] font-[600]'>Best Deal!</h3>

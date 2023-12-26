@@ -157,3 +157,70 @@ export const footerData = [
         ]
     },
 ]
+
+
+export const productsData = [
+    {
+        id:101,
+        title:"Modern Design Hat",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-3-450x450.jpeg",
+        price:"$19.00",
+        descripition:"shoes",
+    },
+    {
+        id:102,
+        title:"Universal Shoes",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-5.jpeg",
+        price:"$19.00",
+        descripition:"shoes",
+    },
+    {
+        id:103,
+        title:"Black Coat",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-18-450x450.jpeg",
+        discountPrice:"$129.00",
+        price:"$19.00",
+        descripition:"shoes",
+        discount:"25%",
+    },
+    {
+        id:104,
+        title:"Yellow Free Cloth",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-10-450x450.jpeg",
+        discountPrice:"$129.00",
+        price:"$19.00",
+        descripition:"shoes",
+        discount:"25%"
+    },
+    {
+        id:105,
+        title:"Navy Blue Bland Sweater",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-14-980x1205.jpeg",
+        discountPrice:"$129.00",
+        price:"$699.00",
+        descripition:"shoes",
+        discount:"25%"
+    },
+    {
+        id:106,
+        title:"Modern Design Hat",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-14-980x1205.jpeg",
+        price:"$699.00",
+        descripition:"shoes",
+    },
+    {
+        id:107,
+        title:"Modern Design Hat",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-21-980x1205.jpeg",
+        price:"$699.00",
+        descripition:"shoes",
+    },
+    {
+        id:108,
+        title:"Green Yellow Blouse",
+        image:"https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/07/fashion-image-24.jpeg",
+        price:"$699.00",
+        descripition:"shoes",
+    },
+    
+]
