@@ -1,21 +1,21 @@
-import React from "react";
 import story from "../../assets/shop-view.jpg";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { BiDollarCircle } from "react-icons/bi";
 import { BsAwardFill } from "react-icons/bs";
+import {Wrapper} from "../wrapper/Wrapper"
 const StorySection = () => {
   return (
     <>
       {/* Story Section */}
 
-      <div className="w-full flex flex-col lg:flex-row lg:px-48 lg:py-28">
+      <Wrapper className="w-full flex flex-col lg:flex-row items-start lg:px-48 lg:py-28">
         <div className="w-full lg:w-1/2 ">
           <img src={story} alt="story" className="w-full h-auto " />
         </div>
 
-        <div className="w-full lg:w-1/2  p-9">
-          <h1 className="uppercase text-2xl font-semibold py-8">Our Story</h1>
-          <p className="text-gray-500 py-7 ">
+        <div className="w-full lg:w-1/2  px-9">
+          <h1 className="uppercase text-2xl font-semibold lg:mt-0 mt-3">Our Story</h1>
+          <p className="text-gray-500 py-2">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             indust orem Ipsum has been the industry’s standard dummy texever
             since the when an unknown printer took a galley of type and
@@ -34,14 +34,14 @@ const StorySection = () => {
             </h1>
 
             <hr />
-            <div className="flex gap-8 py-10">
+            <div className="flex sm:flex-nowrap flex-wrap gap-8 py-10">
               <div className="flex flex-col">
                 <div className="flex items-center">
                   <div>
                     <IoDocumentTextOutline className="flex w-12 h-12 text-gray-500" />
                   </div>
                   <div>
-                    <p className="flex font-bold text-gray-600 text-3xl py-5">
+                    <p className="flex font-bold text-gray-600 sm:text-3xl text-[1.3rem] py-5">
                       324+
                     </p>
                   </div>
@@ -58,7 +58,7 @@ const StorySection = () => {
                     <BiDollarCircle className="flex w-12 h-12 text-gray-500" />
                   </div>
                   <div>
-                    <p className="flex font-bold text-gray-600 text-3xl py-5">
+                    <p className="flex font-bold text-gray-600 sm:text-3xl text-[1.3rem]  py-5">
                       $3M
                     </p>
                   </div>
@@ -75,7 +75,7 @@ const StorySection = () => {
                     <BsAwardFill className="flex w-12 h-12 text-gray-500" />
                   </div>
                   <div>
-                    <p className="flex font-bold text-gray-600 text-3xl py-5">
+                    <p className="flex font-bold text-gray-600 sm:text-3xl text-[1.3rem] py-5">
                       379+
                     </p>
                   </div>
@@ -89,7 +89,7 @@ const StorySection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Wrapper>
 
       {/* Story Section Ended */}
     </>

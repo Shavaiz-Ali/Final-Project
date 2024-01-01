@@ -21,6 +21,11 @@ const productSchema = mongoose.Schema({
         default: "",
         required: true,
     },
+    category:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Category",
+        required:true
+    }
 });
 
 const products = mongoose.model("Products", productSchema);
