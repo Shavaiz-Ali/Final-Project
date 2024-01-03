@@ -13,7 +13,6 @@ const productSchema = mongoose.Schema({
     },
     price:{
         type:Number,
-        default: "",
         required: true,
     },
     description:{
@@ -23,7 +22,6 @@ const productSchema = mongoose.Schema({
     },
     stock:{
         type:Number,
-        default:0,
         required:true
     }
 });

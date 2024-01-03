@@ -7,7 +7,6 @@ import {
 } from "../../Store/storeSlice";
 const ItemsCard = ({item}) => {
   const dispatch = useDispatch()
-  console.log(item.quantity)
   return (
     <div className="flex justify-around items-center">
       <div className="flex flex-col items-start md:col-span-4 col-span-6 ">
@@ -32,7 +31,7 @@ const ItemsCard = ({item}) => {
               decreaseQuantity(item.id)
             )}>-</span>
 
-            <h1 className="ext-xl flex justify-center items-center">{item.quantity }</h1>
+            <h1 className="ext-xl flex justify-center items-center">{1 }</h1>
 
             <span className="m:text-2xl text-[16px] flex items-center justify-center  cursor-pointer duration-300"onClick={() => dispatch(
               increaseQuantity(item.id)
@@ -41,7 +40,7 @@ const ItemsCard = ({item}) => {
       </div>
 
       <div className="md:col-span-2 col-span-6">        
-          <h1 className="text-xl font-[600] mt-1">${item.price * item.quantity}</h1>
+          <h1 className="text-xl font-[600] mt-1">${item.price * 1}</h1>
       </div>
     </div>
   )

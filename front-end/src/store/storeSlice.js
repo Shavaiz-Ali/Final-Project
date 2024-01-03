@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    allProducts: [],
     products: [],
-    isLoading: false,
-    error: null,
 };
 
 
@@ -15,15 +12,13 @@ const storeSlice = createSlice({
         addToCart(state, action) {
             const item = state.products.find(
                 (item) => item.id === action.payload.id
-            );
-            if (item) {
-                item.quantity += action.payload.quantity;
-            } else {
+              );
+              if (item) {
+                // Check if item.quantity exists before incrementing
+                item.quantity = (item.quantity || 0) + action.payload.quantity;
+              } else {
                 state.products.push(action.payload);
-            }
-
-            // Update localStorage
-            localStorage.setItem("cart", JSON.stringify(state));
+              }
         },
         increaseQuantity(state, action) {
             const item = state.products.find(
@@ -33,8 +28,6 @@ const storeSlice = createSlice({
                 item.quantity++;
             }
 
-            // Update localStorage
-            localStorage.setItem("cart", JSON.stringify(state));
         },
         decreaseQuantity(state, action) {
             const item = state.products.find(
@@ -62,7 +55,6 @@ export const {
     increaseQuantity,
     decreaseQuantity,
     Reset,
-    filterByRange,
     deleteItem,
 } = storeSlice.actions;
 

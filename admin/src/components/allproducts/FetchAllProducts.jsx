@@ -61,7 +61,7 @@ const FetchAllProducts = () => {
                     <td className="px-6 py-4">
                         <img src={item.image[0]} alt="" className="h-[30px] w-[30px]"/>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 truncate">
                         {item.description}
                     </td>
                     <td className="px-6 py-4">

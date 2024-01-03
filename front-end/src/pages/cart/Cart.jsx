@@ -20,7 +20,7 @@ const Cart = () => {
     let price = 0;
     products.map((item) => {
       console.log(item.price)
-      price += item.price * item.quantity;
+      price += item.price * 1;
       return price;
     });
     setTotalAmt(price);

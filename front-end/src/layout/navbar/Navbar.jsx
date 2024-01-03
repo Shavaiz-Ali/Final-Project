@@ -31,7 +31,7 @@ const Navbar = () => {
     return(
         <nav className="w-full shadow-md py-[25px]">
             <Wrapper className={"flex justify-between items-center"}>
-                <img src={logo} alt="navbar logo" />
+                <h1 className="text-3xl font-[600]">Store</h1>
                 {
                     navbarPc ? (
                         <ul className="flex justify-center items-center gap-5">
