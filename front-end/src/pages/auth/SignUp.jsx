@@ -56,7 +56,7 @@ const SignUp = () => {
     if (validateForm()) {
       try {
         const response = await axios.post(
-          "http://localhost:8000/user/login",
+          "http://localhost:9000/user/signup",
           formData
         );
         console.log(response);
@@ -145,8 +145,8 @@ const SignUp = () => {
               />
             </div>
             {errors.password && (
-                <p className="text-red-500">{errors.password}</p>
-              )}
+              <p className="text-red-500">{errors.password}</p>
+            )}
           </div>
           <div>
             <label htmlFor="confirmPassword" className="font-medium text-sm">
@@ -170,15 +170,15 @@ const SignUp = () => {
               />
             </div>
             {errors.password && (
-                <p className="text-red-500">{errors.password}</p>
-              )}
+              <p className="text-red-500">{errors.password}</p>
+            )}
           </div>
           <div className="flex justify-between items-center">
             <button
               type="submit"
               className="h-[45px] w-[120px] bg-orange-500 text-white flex justify-center items-center rounded-[4px] text-[14px] font-[400]"
             >
-              Sign In
+              Sign Up
             </button>
             <h3 className="flex justify-center items-center">
               <input type="checkbox" id="remember_me" />
