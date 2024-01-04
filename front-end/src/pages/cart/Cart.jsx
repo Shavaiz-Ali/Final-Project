@@ -53,7 +53,7 @@ const Cart = () => {
                 <div className="mt-5 border-t py-3">
                   {products.map((item) => {
                     return(
-                      <div key={item.id}>
+                      <div key={item._id}>
                         <ItemCard item={item}/>
                       </div>
                     )

@@ -10,25 +10,28 @@ const storeSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state, action) {
-            const item = state.products.find(
-                (item) => item.id === action.payload.id
-              );
-              if (item) {
-                // Check if item.quantity exists before incrementing
-                item.quantity = (item.quantity || 0) + action.payload.quantity;
-              } else {
-                state.products.push(action.payload);
-              }
-        },
-        increaseQuantity(state, action) {
-            const item = state.products.find(
-                (item) => item.id === action.payload
-            );
-            if (item) {
-                item.quantity++;
+            const { item, quantity } = action.payload;
+            console.log(item._id);
+            const existingItem = state.products.find((cartItem) => cartItem._id === item._id);
+      
+            if (existingItem) {
+              // If item already exists in the cart, update its quantity
+              existingItem.quantity += quantity;
+            } else {
+              // If item does not exist, add it to the cart
+              state.products.push({ ...item, quantity });
             }
-
-        },
+          },
+          increaseQuantity(state, action) {
+            const { _id } = action.payload;
+            console.log(_id)
+            const item = state.products.find((item) => item._id === _id);
+            console.log(item);
+            
+            if (item) {
+              item.quantity += 1;
+            }
+          },       
         decreaseQuantity(state, action) {
             const item = state.products.find(
                 (item) => item.id === action.payload
@@ -41,7 +44,7 @@ const storeSlice = createSlice({
         },
         deleteItem(state, action) {
             state.products = state.products.filter(
-                (item) => item.id !== action.payload
+                (item) => item._id !== action.payload
             );
         },
         Reset(state) {

@@ -12,7 +12,7 @@ const ItemsCard = ({item}) => {
       <div className="flex flex-col items-start md:col-span-4 col-span-6 ">
           <div className="flex items-center mt-1 gap-3">
             <span onClick={() => dispatch(
-              deleteItem(item.id)
+              deleteItem(item._id)
             )}>
             <ImCross className="cursor-pointer"/>
             </span>
@@ -28,13 +28,13 @@ const ItemsCard = ({item}) => {
       <div className="flex flex-col md:col-span-4 col-span-6">
           <div className="flex gap-5 items-center mt-1">
             <span className="sm:text-2xl text-[16px] flex items-center justify-center cursor-pointer duration-300 " onClick={() => dispatch(
-              decreaseQuantity(item.id)
+              decreaseQuantity({_id:item._id})
             )}>-</span>
 
             <h1 className="ext-xl flex justify-center items-center">{1 }</h1>
 
             <span className="m:text-2xl text-[16px] flex items-center justify-center  cursor-pointer duration-300"onClick={() => dispatch(
-              increaseQuantity(item.id)
+              increaseQuantity(item._id)
             )}>+</span>
           </div>
       </div>
