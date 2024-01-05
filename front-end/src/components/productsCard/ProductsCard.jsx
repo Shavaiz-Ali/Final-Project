@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { productsData } from "../../utils/constants";
 import { FaEye, FaBalanceScale } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/storeSlice";
@@ -82,4 +81,5 @@ const Productscard = () => {
     </div>
   );
 };
+
 export default Productscard;
