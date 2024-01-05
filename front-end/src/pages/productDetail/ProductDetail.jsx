@@ -2,8 +2,8 @@ import { useLocation } from "react-router-dom";
 import BreadCrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import { Wrapper } from "../../components/wrapper/Wrapper";
 import ProductDetailSlider from "../../components/productDetailSlider/ProductDetailSlider";
-import {useDispatch} from "react-redux"
-import {addToCart} from "../../store/storeSlice"
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/storeSlice";
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ const ProductDetail = () => {
         {/* product details  */}
         <div className="flex flex-col items-start gap-5 mt-[30px] md:w-[50%] w-full">
           <div className="flex justify-center items-center gap-4">
+            <p className="text-xl font-bold">{item.name}</p>
             {item.discount ? (
               <>
                 <h1 className="flex justify-center items-center rounded-[4px] h-[25px] px-3 text-[14px] font-[400]  bg-black/[0.15]">
@@ -54,26 +55,36 @@ const ProductDetail = () => {
             {item.price}
           </h1>
           <p className="text-[14px] text-gray-600/[0.90] font-[400]">
-            {item.descripition}
+            {item.description}
           </p>
           {/* offer  */}
-          <h1 className="text-[16px] font-[500]"><span className="text-yellow-400">Hurry Up!</span> Limited Time Offer</h1>
+          <h1 className="text-[16px] font-[500]">
+            <span className="text-yellow-400">Hurry Up!</span> Limited Time
+            Offer
+          </h1>
           <div className="flex justify-center items-center gap-3">
-            <h1 className="h-[50px] w-[50px] bg-black text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">00
+            <h1 className="h-[50px] w-[50px] bg-black text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">
+              00
               <span>DAY</span>
             </h1>
-            <h1 className="h-[50px] w-[50px] bg-black text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">00
+            <h1 className="h-[50px] w-[50px] bg-black text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">
+              00
               <span>HOUR</span>
             </h1>
-            <h1 className="h-[50px] w-[50px] bg-black text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">00
+            <h1 className="h-[50px] w-[50px] bg-black text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">
+              00
               <span>MIN</span>
             </h1>
-            <h1 className="h-[50px] w-[50px] bg-yellow-400 text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">00
+            <h1 className="h-[50px] w-[50px] bg-yellow-400 text-white text-[14px] font-[400] rounded-[4px] flex flex-col justify-center items-center">
+              00
               <span>SEC</span>
             </h1>
           </div>
           {/* add to cart button  */}
-          <button className="h-[50px] w-[220px] flex justify-center items-center text-white bg-orange-600 text-[16px] font-[600] rounded-[4px]" onClick={dispatch(addToCart(item))}>
+          <button
+            className="h-[50px] w-[220px] flex justify-center items-center text-white bg-orange-600 text-[16px] font-[600] rounded-[4px]"
+            onClick={dispatch(addToCart(item))}
+          >
             Add to Cart
           </button>
         </div>

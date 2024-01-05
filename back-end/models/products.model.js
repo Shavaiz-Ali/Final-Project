@@ -24,6 +24,10 @@ const productSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  categories: {
+    type: String,
+    required: true,
+  },
 });
 
 const products = mongoose.model("Products", productSchema);

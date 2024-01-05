@@ -4,17 +4,24 @@ import Product from "../models/products.model.js";
 export const addProduct = async (req, res) => {
   try {
     const image = req.file.filename;
-    const { name, price, description, stock } = req.body;
+    const { name, price, description, stock, categories } = req.body;
 
     // Check if required fields are present in the request body
-    if (!name || !image || !price || !description || !stock) {
+    if (!name || !image || !price || !description || !stock || !categories) {
       return res
         .status(400)
         .json({ msg: "Please include all required fields" });
     }
 
     // Create a new product instance
-    const newProduct = new Product({ name, image, price, description, stock });
+    const newProduct = new Product({
+      name,
+      image,
+      price,
+      description,
+      stock,
+      categories,
+    });
 
     // Save the new product to the database
     await newProduct.save();
@@ -46,15 +53,27 @@ export const addProduct = async (req, res) => {
 // Get all products
 export const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const category = req.query.category;
+    const minPrice = parseFloat(req.query.minPrice);
+    const maxPrice = parseFloat(req.query.maxPrice);
 
-    // Check if any products are found
-    if (!products || products.length === 0) {
-      return res
-        .status(404)
-        .json({ success: false, message: "No products found" });
+    let query = {};
+
+    if (category && category !== "All") {
+      query.categories = category;
     }
 
+    if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+      query.price = { $gte: minPrice, $lte: maxPrice };
+    }
+
+    const products = await Product.find(query).sort({ _id: -1 });
+    // Check if any products are found
+    // if (!products || products.length === 0) {
+    //   return res
+    //     .status(404)
+    //     .json({ success: false, message: "No products found" });
+    // }
     // Return a success response with the product data
     res.status(200).json({ data: products });
   } catch (error) {
