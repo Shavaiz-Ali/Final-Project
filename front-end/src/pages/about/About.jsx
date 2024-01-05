@@ -11,7 +11,7 @@ import { Wrapper } from "../../components/wrapper/Wrapper";
 
 const data = [
   {
-    id:1,
+    id: 1,
     name: "Home Fast Delivery",
     description:
       "Lorem Ipsum simply dumm the printing and typesetting indust orem Ipsum has been the industry standard dummy men book.",
@@ -22,7 +22,7 @@ const data = [
     ),
   },
   {
-    id:2,
+    id: 2,
     name: "Secure Payment",
     description:
       "Lorem Ipsum simply dumm the printing and typesetting indust orem Ipsum has been the industry standard dummy men book.",
@@ -33,7 +33,7 @@ const data = [
     ),
   },
   {
-    id:3,
+    id: 3,
     name: "24/7 Customer Support",
     description:
       "Lorem Ipsum simply dumm the printing and typesetting indust orem Ipsum has been the industry standard dummy men book.",
@@ -65,7 +65,7 @@ const About = () => {
         </p>
         <div className="flex justify-center flex-wrap  gap-5 px-5 py-24 ">
           {data.map((item) => {
-            return <ExperienceCard {...item} key={item.id}/>;
+            return <ExperienceCard {...item} key={item.id} />;
           })}
         </div>
       </Wrapper>
@@ -84,7 +84,7 @@ const About = () => {
           {Array(3)
             .fill(3)
             .map((item, index) => {
-              return <ReviewCard key={index}/>;
+              return <ReviewCard key={index} />;
             })}
         </div>
       </Wrapper>

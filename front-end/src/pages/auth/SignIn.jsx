@@ -6,12 +6,13 @@ import { Wrapper } from "../../components/wrapper/Wrapper";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
+import { useAuthContext } from "../../context/authContext";
 const SignIn = () => {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
+  const { AuthData } = useAuthContext();
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
@@ -25,12 +26,6 @@ const SignIn = () => {
   const validateForm = () => {
     let isValid = true;
     const newErrors = {};
-
-    // Validate name
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-      isValid = false;
-    }
 
     // Validate email
     if (!formData.email.trim()) {
@@ -52,31 +47,35 @@ const SignIn = () => {
 
     if (validateForm()) {
       try {
-        const response = await axios.post(
-          "http://localhost:8000/user/login",
+        const { data } = await axios.post(
+          "http://localhost:9000/user/login",
           formData
         );
-        console.log(response);
-        toast.success("Login Successfully you will be redirected soon!", {
-          position: "top-right",
-          autoClose: 2400,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
+
+        if (data && data.token) {
+          localStorage.setItem("accessToken", data.token);
+          AuthData(data.data);
+          toast.success("Login Successfully you will be redirected soon!", {
+            position: "top-right",
+            autoClose: 2400,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
+        }
       } catch (error) {
         console.log("Error", error);
       }
     }
   };
 
-  const { name, email, password } = formData;
+  const { email, password } = formData;
   return (
     <>
       <div className="flex flex-col justify-center items-center gap-3 h-[210px] bg-[url(https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/05/breadcrumb_bg.jpg)]">
@@ -90,21 +89,6 @@ const SignIn = () => {
           onSubmit={handleSubmit}
         >
           <h3 className="text-[38px] font-[600] uppercase">Sign IN</h3>
-          <div className="flex flex-col items-start gap-1">
-            <label htmlFor="name" className="font-medium text-sm">
-              Full Name:
-            </label>
-            <input
-              className="h-[45px] w-full border px-2 outline-none"
-              type="text"
-              name="name"
-              id="name"
-              value={name}
-              placeholder="enter your name"
-              onChange={onChange}
-            />
-            {errors.name && <p className="text-red-500">{errors.name}</p>}
-          </div>
           <div className="flex flex-col items-start gap-1">
             <label htmlFor="email" className="font-medium text-sm">
               Email Address:
@@ -142,8 +126,8 @@ const SignIn = () => {
               />
             </div>
             {errors.password && (
-                <p className="text-red-500">{errors.password}</p>
-              )}
+              <p className="text-red-500">{errors.password}</p>
+            )}
           </div>
           <div className="flex justify-between items-center">
             <button

@@ -1,4 +1,3 @@
-import React from "react";
 import { RiStarSFill } from "react-icons/ri";
 const ReviewCard = () => {
   return (
@@ -18,14 +17,19 @@ const ReviewCard = () => {
       <div className="flex justify-center py-2">
         {Array(5)
           .fill(5)
-          .map(() => {
-            return <RiStarSFill className="flex w-4 h-4 text-yellow-500" />;
+          .map((item, index) => {
+            return (
+              <RiStarSFill
+                className="flex w-4 h-4 text-yellow-500"
+                key={index}
+              />
+            );
           })}
       </div>
       <div>
         <p className="text-gray-500 italic text-sm  ">
-          “ In promotion and advertising, a testimonial show consists of a
-          person's written spoken statement extolling the virtue of a product ”
+          “In promotion and advertising, a testimonial show consists of a
+          persons written spoken statement extolling the virtue of a product ”
         </p>
       </div>
     </div>
