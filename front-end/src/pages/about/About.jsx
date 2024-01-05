@@ -7,9 +7,11 @@ import { RiSecurePaymentLine } from "react-icons/ri";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import ReviewCard from "../../components/reviewCard";
 import banner from "../../assets/banner.png";
+import { Wrapper } from "../../components/wrapper/Wrapper";
 
 const data = [
   {
+    id: 1,
     name: "Home Fast Delivery",
     description:
       "Lorem Ipsum simply dumm the printing and typesetting indust orem Ipsum has been the industry standard dummy men book.",
@@ -20,6 +22,7 @@ const data = [
     ),
   },
   {
+    id: 2,
     name: "Secure Payment",
     description:
       "Lorem Ipsum simply dumm the printing and typesetting indust orem Ipsum has been the industry standard dummy men book.",
@@ -30,6 +33,7 @@ const data = [
     ),
   },
   {
+    id: 3,
     name: "24/7 Customer Support",
     description:
       "Lorem Ipsum simply dumm the printing and typesetting indust orem Ipsum has been the industry standard dummy men book.",
@@ -52,7 +56,7 @@ const About = () => {
       <StorySection />
 
       {/* Experice Section */}
-      <div className="w-full bg-[#f5f4ee] py-16">
+      <Wrapper className="w-full bg-[#f5f4ee] py-16">
         <p className="uppercase text-orange-500 text-center font-bold text-[12px]">
           Why Choose Us
         </p>
@@ -61,15 +65,15 @@ const About = () => {
         </p>
         <div className="flex justify-center flex-wrap  gap-5 px-5 py-24 ">
           {data.map((item) => {
-            return <ExperienceCard {...item} />;
+            return <ExperienceCard {...item} key={item.id} />;
           })}
         </div>
-      </div>
+      </Wrapper>
 
       {/* Experice Section Ended*/}
 
       {/* Review Section */}
-      <div className="w-full  py-16">
+      <Wrapper className="w-full  py-16">
         <p className="uppercase text-orange-500 text-center font-bold text-[12px]">
           OUR TESTIMONIAL
         </p>
@@ -79,12 +83,11 @@ const About = () => {
         <div className="flex justify-center flex-wrap  gap-5 px-5 py-24 ">
           {Array(3)
             .fill(3)
-            .map((item) => {
-              return <ReviewCard />;
+            .map((item, index) => {
+              return <ReviewCard key={index} />;
             })}
         </div>
-        s
-      </div>
+      </Wrapper>
 
       {/* Review Section Ended */}
 

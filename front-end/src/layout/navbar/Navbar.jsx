@@ -10,12 +10,12 @@ import {FaBarsStaggered} from "react-icons/fa6";
 import {AiOutlineShoppingCart} from "react-icons/ai";
 import { FaRegHeart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
-
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [navbarPc, setNavbarPc] = useState(true);
-
+    const products = useSelector((state) => state.users.products);
     useEffect(() =>{
         let responsiveNavbar = () =>{
             if(window.innerWidth <= 766){
@@ -31,7 +31,7 @@ const Navbar = () => {
     return(
         <nav className="w-full shadow-md py-[25px]">
             <Wrapper className={"flex justify-between items-center"}>
-                <img src={logo} alt="navbar logo" />
+                <h1 className="text-3xl font-[600]">Store</h1>
                 {
                     navbarPc ? (
                         <ul className="flex justify-center items-center gap-5">
@@ -55,10 +55,10 @@ const Navbar = () => {
                         <span className="h-[16px] w-[16px] bg-yellow-400 rounded-full flex justify-center items-center absolute top-[-13px] right-[-10px] text-[14px] font-400">0</span>
                         <FaRegHeart className="text-[20px] "/>
                     </div>
-                    <div className="relative">
-                        <span className="h-[16px] w-[16px] bg-yellow-400 rounded-full flex justify-center items-center absolute top-[-13px] right-[-10px] text-[14px] font-400">0</span>
+                    <Link to={"/cart"} className="relative">
+                        <span className="h-[16px] w-[16px] bg-yellow-400 rounded-full flex justify-center items-center absolute top-[-13px] right-[-10px] text-[14px] font-400">{products.length > 0 ? products.length : 0}</span>
                     <AiOutlineShoppingCart className="text-[20px] "/>
-                    </div>
+                    </Link>
                 </div>
                     <div className="md:hidden">
                          <FaBarsStaggered className="text-[24px] font-bold cursor-pointer" onClick={() => setShowMenu(true)}/>

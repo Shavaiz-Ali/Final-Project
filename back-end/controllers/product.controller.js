@@ -4,17 +4,17 @@ import Product from "../models/products.model.js";
 export const addProduct = async (req, res) => {
   try {
     const image = req.file.filename;
-    const { name, price, description } = req.body;
+    const { name, price, description, stock } = req.body;
 
     // Check if required fields are present in the request body
-    if (!name || !image || !price || !description) {
+    if (!name || !image || !price || !description || !stock) {
       return res
         .status(400)
         .json({ msg: "Please include all required fields" });
     }
 
     // Create a new product instance
-    const newProduct = new Product({ name, image, price, description });
+    const newProduct = new Product({ name, image, price, description, stock });
 
     // Save the new product to the database
     await newProduct.save();
