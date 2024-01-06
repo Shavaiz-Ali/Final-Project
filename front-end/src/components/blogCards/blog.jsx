@@ -1,26 +1,34 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import blogImage from "../../assets/shop-view.jpg";
 
 function BlogCard() {
   return (
-    <div>
-      <div>
-        <div className="bg-gray-600/[0.12]">
+    <>
+      <div className="cursor-pointer text-center space-x-4">
+        {/* <Link to={`/product/${item._id}`} state={{ item: item }}> */}
+        <Link to={`/blog/123331232`}>
           <img
-            src="https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/06/fashion-posts-1.jpg"
-            alt=""
-            className="hover:scale-[0.98] transition-all duration-300 ease-in-out w-full cursor-pointer object-center"
+            // src={"http://localhost:9000/" + item.image}
+            src={blogImage}
+            alt="imagecup"
+            className="w-full h-[240px] object-cover"
           />
-        </div>
-        <h3 className="text-[28px] font-[600] uppercase">NEW GENERATION</h3>
-        <h3 className="text-[28px] font-[600] uppercase">CLOTHING STYLES</h3>
+
+          <h4 className="font-bold font-poppins leading-tight overflow-hidden overflow-ellipsis whitespace-nowrap pt-5 text-left">
+            Title
+          </h4>
+          <p className="font-thin text-[#415161] overflow-ellipsis text-left">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt,
+            nisi? Obcaecati magni ex aliquam illo dolore distinctio id
+            cupiditate necessitatibus aspernatur molestias. Et!
+          </p>
+
+          <p className="text-left text-orange-600 py-2 text-sm hover:text-orange-800">
+            Read More
+          </p>
+        </Link>
       </div>
-      <div>
-        <p className="text bg-white 400 py-1">
-          Namkand sodales vel online best prices Amazon Check out ethnic wear,
-          formal wear western wear Blood Pressure Rate Monito.
-        </p>
-      </div>
-    </div>
+    </>
   );
 }
 

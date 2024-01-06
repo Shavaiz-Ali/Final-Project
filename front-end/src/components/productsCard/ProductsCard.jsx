@@ -35,7 +35,7 @@ const Productscard = () => {
             <img
               src={`http://localhost:9000/${item.image}`}
               alt={`product-image${item.id}`}
-              className="sm:h-[350px] w-full object-"
+              className="sm:h-[350px] w-full object-cover"
             />
           </Link>
           <div className="flex justify-center items-center gap-16 py-[10px]">
