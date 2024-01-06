@@ -1,9 +1,15 @@
 import { FaRegUser } from "react-icons/fa6";
 import { Wrapper } from "../../components/wrapper/Wrapper";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 const Header = () => {
   const { isAuth, userInfo } = useAuthContext();
+  const navigate = useNavigate();
+  const HandleSignOut = () => {
+    localStorage.clear("accessToken");
+    window.location.reload();
+    navigate("/");
+  };
   return (
     <header className="w-full py-5 border-b">
       <Wrapper className="flex sm:justify-between justify-center items-center w-full">
@@ -20,6 +26,18 @@ const Header = () => {
             </Link>
           ) : (
             <p className="cursor-pointer">{userInfo && userInfo.name}</p>
+          )}
+
+          {isAuth && (
+            <>
+              <span className="text-[14px] text-[#131313]/[0.50] font-[400]">
+                |
+              </span>
+
+              <p className="cursor-pointer" onClick={HandleSignOut}>
+                Sign Out
+              </p>
+            </>
           )}
 
           <span className="text-[14px] text-[#131313]/[0.50] font-[400]">
