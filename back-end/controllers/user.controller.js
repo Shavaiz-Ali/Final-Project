@@ -81,7 +81,7 @@ export const login = async (req, res) => {
 //controller to get all users
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find({ role: "USER" });
 
     // Check if there are no users
     if (!users || users.length === 0) {

@@ -7,8 +7,8 @@ const Header = () => {
   const navigate = useNavigate();
   const HandleSignOut = () => {
     localStorage.clear("accessToken");
-    window.location.reload();
     navigate("/");
+    window.location.reload();
   };
   return (
     <header className="w-full py-5 border-b">
@@ -43,9 +43,19 @@ const Header = () => {
           <span className="text-[14px] text-[#131313]/[0.50] font-[400]">
             |
           </span>
-          <a href="#" className="text-[14px] text-[#131313]/[0.50] font-[400]">
-            My Account
-          </a>
+
+          {isAuth && userInfo && userInfo.role === "ADMIN" ? (
+            <Link to="/dashboard" className="text-[14px]  font-[400]">
+              My Account
+            </Link>
+          ) : (
+            <Link
+              href="#"
+              className="text-[14px] text-[#131313]/[0.50] font-[400]"
+            >
+              My Account
+            </Link>
+          )}
         </div>
       </Wrapper>
     </header>

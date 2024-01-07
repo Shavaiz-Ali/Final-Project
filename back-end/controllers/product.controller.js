@@ -132,8 +132,9 @@ export const deleteSingleProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const productData = req.body;
-    const updateProduct = await Product.findByIdAndUpdate(id, productData, {
+    const value = req.body;
+
+    const updateProduct = await Product.findByIdAndUpdate(id, value, {
       new: true,
     });
 
