@@ -13,9 +13,9 @@ import { middlewareFunc } from "../middlewares/middlewares.js";
 router.post("/signup", signup);
 router.post("/login", login);
 router.get("/me", middlewareFunc, authenticate);
-router.get("/getAllUsers", middlewareFunc, getAllUsers);
-router.get("/getSingleUser/:id", middlewareFunc, getSingleUser);
-router.delete("/deleteSingleUser/:id", middlewareFunc, deleteSingleUser);
-router.put("/updateSingleUser/:id", middlewareFunc, updateSingleUser);
+router.get("/getAllUsers", getAllUsers);
+router.get("/getSingleUser/:id", getSingleUser);
+router.delete("/deleteSingleUser/:id", deleteSingleUser);
+router.put("/updateSingleUser/:id", updateSingleUser);
 
 export default router;

@@ -7,7 +7,7 @@ export const addProduct = async (req, res) => {
     const { name, price, description, stock, categories } = req.body;
 
     // Check if required fields are present in the request body
-    if (!name || !image || !price || !description || !stock || !categories) {
+    if (!name || !price || !description || !stock || !categories) {
       return res
         .status(400)
         .json({ msg: "Please include all required fields" });

@@ -7,7 +7,7 @@ import { Reset } from "../../store/storeSlice";
 import BreadCrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import { useLocation } from "react-router-dom";
 import { Wrapper } from "../../components/wrapper/Wrapper";
-
+import axios from "axios"
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.users.products);
@@ -19,7 +19,6 @@ const Cart = () => {
   useEffect(() => {
     let price = 0;
     products.map((item) => {
-      console.log(item.price);
       price += item.price * 1;
       return price;
     });
@@ -34,6 +33,24 @@ const Cart = () => {
       setShippingCharge(20);
     }
   }, [totalAmt]);
+
+  const handleCheckOut = async () => {
+    try {
+      const items = products.map((item) => ({
+        id: item._id,
+        name: item.name,
+        price: item.price,
+      }));
+  
+      const res = await axios.post("http://localhost:9000/create-checkout-session", {
+        items: items,
+      });
+      const data = res.data; // Use res.data to get the response data
+      window.location = data.url;
+    } catch (err) {
+      console.error("Error during checkout:", err);
+    }
+  };
   return (
     <div className="mx-auto overflow-hidden" data-aos="zoom-in">
       <div className="flex flex-col justify-center items-center gap-3 h-[210px] bg-[url(https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/05/breadcrumb_bg.jpg)]">
@@ -97,7 +114,7 @@ const Cart = () => {
                   <span>${totalAmt + shippingCharge}</span>
                 </h1>
               </div>
-              <button className="w-[250px] h-[40px] text-white bg-black border-0 outline-none mt-4">
+              <button className="w-[250px] h-[40px] text-white bg-black border-0 outline-none mt-4" onClick={handleCheckOut}>
                 Proceed to Checkout
               </button>
             </div>

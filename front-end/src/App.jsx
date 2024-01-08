@@ -15,6 +15,7 @@ import Footer from "./layout/footer/Footer";
 import ProductDetail from "./pages/productDetail/ProductDetail";
 import Cart from "./pages/cart/Cart";
 import SingleBlog from "./pages/singleBlog";
+import Success from "./pages/messages/Success";
 function App() {
   return (
     <>
@@ -32,6 +33,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/success" element={<Success />} />
       </Routes>
       <Footer />
     </>

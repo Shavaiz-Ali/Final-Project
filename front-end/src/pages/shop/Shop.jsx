@@ -22,7 +22,7 @@ const Shop = () => {
   const { isProductFetching, allProducts } = useSelector(
     (state) => state.getAllProductsSlicer
   );
-
+console.log(allProducts)
   const dispatch = useDispatch();
 
   useEffect(() => {

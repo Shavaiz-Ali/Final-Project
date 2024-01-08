@@ -2,6 +2,7 @@ import AddProduct from "./components/addProduct/AddProduct"
 import FetchAllProducts from "./components/allproducts/FetchAllProducts"
 import Navbar from "./components/navbar/Navbar"
 import {Routes, Route} from "react-router-dom"
+import RegisteredUsers from "./components/users/RegisteredUsers"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AddProduct />}/>
         <Route path="/products" element={<FetchAllProducts />}/>
+        <Route path="/users" element={<RegisteredUsers />}/>
       </Routes>
     </>
   )

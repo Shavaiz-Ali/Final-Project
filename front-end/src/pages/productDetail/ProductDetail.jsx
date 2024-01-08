@@ -9,8 +9,12 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const item = location.state.item;
+  console.log(item)
   const params = location.pathname.slice(1, 8);
-
+  const handleAddToCart = (item, quantity) => {
+    console.log(item, quantity);
+    dispatch(addToCart({ item, quantity }));
+  };
   return (
     <div>
       <div className="flex flex-col justify-center items-center gap-3 h-[210px] bg-[url(https://ninetheme.com/themes/venam/v2/wp-content/uploads/2021/05/breadcrumb_bg.jpg)]">
@@ -83,7 +87,7 @@ const ProductDetail = () => {
           {/* add to cart button  */}
           <button
             className="h-[50px] w-[220px] flex justify-center items-center text-white bg-orange-600 text-[16px] font-[600] rounded-[4px]"
-            onClick={dispatch(addToCart(item))}
+            onClick={() => handleAddToCart(item, 1)}
           >
             Add to Cart
           </button>

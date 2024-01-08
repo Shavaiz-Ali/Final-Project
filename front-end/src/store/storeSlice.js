@@ -8,33 +8,32 @@ const storeSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    addToCart(state, action) {
-      const item = state.products.find((item) => item.id === action.payload.id);
-      if (item) {
-        // Check if item.quantity exists before incrementing
-        item.quantity = (item.quantity || 0) + action.payload.quantity;
-      } else {
-        state.products.push(action.payload);
-      }
-    },
+      addToCart(state, action) {
+        const { item, quantity } = action.payload;
+        const existingProductIndex = state.products.findIndex((p) => p.id === item.id);
+  
+        if (existingProductIndex !== -1) {
+          // If the product is already in the cart, update its quantity
+          state.products[existingProductIndex].quantity += quantity;
+        } else {
+          // If the product is not in the cart, add it with the given quantity.
+          state.products.push({ ...item, quantity });
+        }
+      },
     increaseQuantity(state, action) {
-      const item = state.products.find((item) => item.id === action.payload);
+      const item = state.products.find((p) => p.id === action.payload);
       if (item) {
         item.quantity++;
       }
     },
     decreaseQuantity(state, action) {
-      const item = state.products.find((item) => item.id === action.payload);
-      if (item.quantity === 1) {
-        item.quantity = 1;
-      } else {
+      const item = state.products.find((p) => p.id === action.payload);
+      if (item && item.quantity > 1) {
         item.quantity--;
       }
     },
     deleteItem(state, action) {
-      state.products = state.products.filter(
-        (item) => item.id !== action.payload
-      );
+      state.products = state.products.filter((p) => p.id !== action.payload);
     },
     Reset(state) {
       state.products = [];

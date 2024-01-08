@@ -1,20 +1,22 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-const FetchAllProducts = () => {
+
+const RegisteredUsers = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+
   const fetchData = async () => {
     try {
-      setLoading(true);
+        setLoading(true)
       const response = await axios.get(
-        "http://localhost:9000/products/getAllProducts"
+        "http://localhost:9000/user/getAllUsers"
       );
-      const result = await response.data.data;
-      setLoading(false);
+      const result = await response.data;
+      setLoading(false)
       console.log(result);
       setData(result);
     } catch (err) {
-      setLoading(false);
+        setLoading(false)
       console.log(err);
     }
   };
@@ -26,7 +28,7 @@ const FetchAllProducts = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:9000/products/deleteSingleProduct/${id}`
+        `http://localhost:9000/user/deleteSingleUser/${id}`
       );
       console.log(response);
       if (response.status === 200) {
@@ -42,22 +44,16 @@ const FetchAllProducts = () => {
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
-              Product name
+              createdAt
             </th>
             <th scope="col" className="px-6 py-3">
-              image
+              Name
             </th>
             <th scope="col" className="px-6 py-3">
-              description
+              Emal
             </th>
             <th scope="col" className="px-6 py-3">
-              Stock
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Price
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Action
+              Edit
             </th>
           </tr>
         </thead>
@@ -80,18 +76,15 @@ const FetchAllProducts = () => {
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
+                  {item.createdAt}
+                </th>
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
                   {item.name}
                 </th>
-                <td className="px-6 py-4">
-                  <img
-                    src={`http://localhost:9000/${item.image}`}
-                    alt=""
-                    className="h-[30px] w-[30px]"
-                  />
-                </td>
-                <td className="px-6 py-4 truncate">{item.description}</td>
-                <td className="px-6 py-4">{item.stock}</td>
-                <td className="px-6 py-4">${item.price}</td>
+                <td className="px-6 py-4 truncate">{item.email}</td>
                 <td className="px-6 py-4 flex gap-1">
                   <a
                     href="#"
@@ -117,4 +110,4 @@ const FetchAllProducts = () => {
   );
 };
 
-export default FetchAllProducts;
+export default RegisteredUsers;
